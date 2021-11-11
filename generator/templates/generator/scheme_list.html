@@ -1,0 +1,43 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+	<div class="row col-12  justify-content-md-center">
+    <div class="col-10">
+         <h3>Data schemas</h3>
+    </div>
+    <div class="col-2">
+      <a class="btn btn-success" href="{%url 'scheme-add'%}" role="button">New Schema</a>
+    </div>
+ </div>
+
+	<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Modified</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+	            {% for scheme in object_list %}
+	            <tr>
+	            	<td>
+	            		{{ scheme.pk }}
+	            	</td>
+	            	<td>
+	            		{{ scheme.scheme_name }}
+	            	</td>
+	            	<td>
+	            		{{ scheme.modified }}
+	            	</td>
+	            	<td>
+	            		<a href ="{% url 'scheme-update' scheme.pk %}">Edit scheme</a>
+	            		&nbsp; 
+	            		<a style="color:red;" href ="{% url 'scheme-delete' scheme.pk %}">Delete</a>
+	            	</td>
+	            </tr>
+	            {% endfor %}
+	        </tbody>
+
+{% endblock %}

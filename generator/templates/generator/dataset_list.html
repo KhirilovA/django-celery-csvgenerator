@@ -1,0 +1,54 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+	<div class="row justify-content-md-center">
+         <h3>Data Sets</h3>
+ 	</div>
+
+	<div id='table'>
+	<table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Created</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    <th>Generate</th>
+                </tr>
+            </thead>
+            <tbody>
+	            {% for scheme in object_list %}
+	            <tr>
+	            	<td>
+	            		{{ scheme.pk }}
+	            	</td>
+	            	<td>
+	            		{{ scheme.created }}
+	            	</td>
+	            	<td>
+	            		{% if scheme.task_progress == 'Ready' %}
+                		<div class="btn btn-success btn-sm">{{ scheme.task_progress }}</div>
+            			{% else %}
+                		<div class="btn btn-secondary btn-sm">{{ scheme.task_progress }}</div>
+            			{% endif %}
+	            	</td>
+	            	<td>
+	            		{% if scheme.task_progress == 'Ready' %}
+	            		{% if scheme.upload %}
+	            		<a href="{{ scheme.upload.url }}" download="{{ scheme.upload.url }}">Download</a>
+	            		{% endif %}
+	            		{% endif %}
+	            	</td>
+	            	<td>
+	            	<form method="POST" action="{% url 'generate-dataset' scheme.pk %}">
+                	{% csrf_token %}
+                		<input type="hidden" name="scheme" value="{{ scheme.pk }}">
+                		<input type="submit" class="btn btn-success btn-sm" value="Generate data">
+        			</form>
+	            	</td>
+	            </tr>
+	            {% endfor %}
+	        </tbody>
+	    </table>
+	</div>
+{% endblock %}
