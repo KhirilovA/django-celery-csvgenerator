@@ -150,7 +150,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 #CELERY SETTINGS
 
-CELERY_BROKER_URL = os.environ.get('REDIS_TLS_URL')
+CELERY_BROKER_URL = os.environ.get('REDIS_URL')
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
