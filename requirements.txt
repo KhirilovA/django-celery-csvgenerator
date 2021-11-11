@@ -13,6 +13,7 @@ Django==3.2.9
 django-celery-results==2.2.0
 django-storages==1.12.3
 Faker==9.8.0
+gunicorn==20.1.0
 jmespath==0.10.0
 kombu==5.2.1
 prompt-toolkit==3.0.22
