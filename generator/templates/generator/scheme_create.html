@@ -2,6 +2,7 @@
 
 {% block content %}
     <form method="POST">
+        {% csrf_token %}
         <p><label for="id_scheme_name">Scheme name:</label> <input type="text" name="scheme_name" maxlength="255" required id="id_scheme_name"></p>
         <p><label for="id_rows">Rows:</label> <input type="number" name="rows" value="1" required id="id_rows"></p>
         </br>
