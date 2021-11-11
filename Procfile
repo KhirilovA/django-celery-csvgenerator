@@ -1,2 +1,2 @@
 web: gunicorn CSVgenerator.wsgi
-celery: celery -A generator.celery worker -E -B --loglevel=INFO
+celery: celery -A generator.celery worker -B --loglevel=info
