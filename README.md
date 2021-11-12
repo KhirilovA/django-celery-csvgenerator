@@ -28,5 +28,5 @@ To run localy you need to clone the repository
  ```
  else:
  ```
- celery -A generator worker -l info
+ celery -A generator.celery worker -l info
  ```
