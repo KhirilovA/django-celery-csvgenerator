@@ -1,0 +1,37 @@
+{% extends 'generator/base.html' %}
+
+{% block content %}
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Order</th>
+                    <th>Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+        		{% for column in object_list %}
+        		<tr>
+	            	<td>
+	            		{{ column.order }}
+	            	</td>
+	            	<td>
+	            		{{ column.name }}
+	            	</td>
+	            	<td>
+	       				<a href ="{% url 'scheme-column-update' column.pk %}" class="btn btn-primary btn-sm">Edit column</a>
+	            		&nbsp;
+	            		<a href href ="{% url 'scheme-column-delete' column.pk %}" class="btn btn-danger btn-sm">Delete</a>
+
+	            	</td>
+	            </tr>
+      
+        {% endfor %}
+    </tbody>
+    <div class="col-12">
+         <h3>Columns</h3>
+    </div>
+
+   
+    
+{% endblock %}

@@ -1,358 +1,53 @@
 {% extends 'generator/base.html' %}
 
 {% block content %}
-    <form method="POST">
+        {% if object %}
+    <div class="col-4">
+    <form action="" method="post">
         {% csrf_token %}
-        <p><label for="id_scheme_name">Scheme name:</label> <input type="text" name="scheme_name" maxlength="255" required id="id_scheme_name"></p>
-        <p><label for="id_rows">Rows:</label> <input type="number" name="rows" value="1" required id="id_rows"></p>
-        </br>
-        <p>In case you use 'age' type of data enter the range</p>
-        <p><label for="id_min_age">Min age:</label> <input type="number" name="min_age" value="0" required id="id_min_age">
-            &nbsp;&nbsp;&nbsp; 
-        <label for="id_max_age">Max age:</label> <input type="number" name="max_age" value="100" required id="id_max_age"></p>
-        </br>
-        <p>In case you use 'Text' type a number of sentences you want to see</p>
-        <p><label for="id_quantity_of_sentences">Sentence number</label> <input type="number" name="quantity_of_sentences" value="1" required id="id_quantity_of_sentences"></p>
-    </br>
-<p>
-<label for="id_name1">Name of column:</label> <input type="text" name="name1" value="None" maxlength="255" required id="id_name1">
-&nbsp;&nbsp;&nbsp; 
-<label for="id_choice1">Type of data:</label> <select name="choice1" id="id_choice1">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select> 
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order1">Order:</label> <input type="number" name="order1" value="0" required id="id_order1">
-</p>
-
-<details  onclick="getElementById('2').style.display = 'none' ">
-<summary id='2'>Add column</summary>
-<p> 
-<label for="id_name2">Name of column:</label> <input type="text" name="name2" value="None" maxlength="255" required id="id_name2">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice2">Type of data:</label> <select name="choice2" id="id_choice2">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order2">Order:</label> <input type="number" name="order2" value="0" required id="id_order2">
-</p>
-
-<details  onclick="getElementById('3').style.display = 'none' ">
-<summary id='3'>Add column</summary>
-<p> 
-<label for="id_name3">Name of column:</label> <input type="text" name="name3" value="None" maxlength="255" required id="id_name3">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice3">Type of data:</label> <select name="choice3" id="id_choice3">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order3">Order:</label> <input type="number" name="order3" value="0" required id="id_order3">
-</p>
-
-<details  onclick="getElementById('4').style.display = 'none' ">
-<summary id='4'>Add column</summary>
-<p> 
-<label for="id_name4">Name of column:</label> <input type="text" name="name4" value="None" maxlength="255" required id="id_name4">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice4">Type of data:</label> <select name="choice4" id="id_choice4">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order4">Order:</label> <input type="number" name="order4" value="0" required id="id_order4">
-</p>
-
-<details  onclick="getElementById('5').style.display = 'none' ">
-<summary id='5'>Add column</summary>
-<p> 
-<label for="id_name5">Name of column:</label> <input type="text" name="name5" value="None" maxlength="255" required id="id_name5">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice5">Type of data:</label> <select name="choice5" id="id_choice5">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order5">Order:</label> <input type="number" name="order5" value="0" required id="id_order5">
-</p>
-
-<details  onclick="getElementById('6').style.display = 'none' ">
-<summary id='6'>Add column</summary>
-<p> 
-<label for="id_name6">Name of column:</label> <input type="text" name="name6" value="None" maxlength="255" required id="id_name6">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice6">Type of data:</label> <select name="choice6" id="id_choice6">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order6">Order:</label> <input type="number" name="order6" value="0" required id="id_order6">
-</p>
-
-<details  onclick="getElementById('7').style.display = 'none' ">
-<summary id='7'>Add column</summary>
-<p> 
-<label for="id_name7">Name of column:</label> <input type="text" name="name7" value="None" maxlength="255" required id="id_name7">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice7">Type of data:</label> <select name="choice7" id="id_choice7">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order7">Order:</label> <input type="number" name="order7" value="0" required id="id_order7">
-</p>
-
-<details  onclick="getElementById('8').style.display = 'none' ">
-<summary id='8'>Add column</summary>
-<p> 
-<label for="id_name8">Name of column:</label> <input type="text" name="name8" value="None" maxlength="255" required id="id_name8">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice8">Type of data:</label> <select name="choice8" id="id_choice8">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order8">Order:</label> <input type="number" name="order8" value="0" required id="id_order8">
-</p>
-
-<details  onclick="getElementById('9').style.display = 'none' ">
-<summary id='9'>Add column</summary>
-<p> 
-<label for="id_name9">Name of column:</label> <input type="text" name="name9" value="None" maxlength="255" required id="id_name9">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice9">Type of data:</label> <select name="choice9" id="id_choice9">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order9">Order:</label> <input type="number" name="order9" value="0" required id="id_order9">
-</p>
-
-<details  onclick="getElementById('10').style.display = 'none' ">
-<summary id='10'>Add column</summary>
-<p> 
-<label for="id_name10">Name of column:</label> <input type="text" name="name10" value="None" maxlength="255" required id="id_name10">
-&nbsp;&nbsp;&nbsp;
-    <label for="id_choice10">Type of data:</label> <select name="choice10" id="id_choice10">
-  <option value="1" selected>Choose</option>
-
-  <option value="2">Name</option>
-
-  <option value="3">Job</option>
-
-  <option value="4">Email</option>
-
-  <option value="5">Domain</option>
-
-  <option value="6">Phone number</option>
-
-  <option value="7">Company</option>
-
-  <option value="8">Text</option>
-
-  <option value="9">Age</option>
-
-  <option value="10">Address</option>
-
-  <option value="11">Date</option>
-
-</select>
-&nbsp;&nbsp;&nbsp; 
-<label for="id_order10">Order:</label> <input type="number" name="order10" value="0" required id="id_order10">
-</p>
-
-    </details>
-    </details>
-    </details>
-    </details>
-    </details>
-    </details>
-    </details>
-    </details>
-</details>
-
-        <p><center><input type="submit" value="Create Scheme"></center></p>
-        
-    </form>
+          <div class="mb-3">
+            <label for="id_scheme_name" class="form-label"> Scheme name :</label>
+            <p>{{ form.scheme_name }}</p>
+            <label for="id_rows" class="form-label"> Rows :</label>
+            <p>{{ form.rows }}</p>
+            <label for="id_rows" class="form-label"> Min age :</label>
+            <p>{{ form.min_age }}</p>
+            <label for="id_max_age" class="form-label"> Max age :</label>
+            <p>{{ form.max_age }}</p>
+            <label for="id_quantity_of_sentences" class="form-label"> How many sentences do you want to generate :</label>
+            <p>{{ form.quantity_of_sentences }}</p>
+          </div>
+          <input type="submit" class="btn btn-primary" value="Create Scheme">
+        </form>
+    </div>
+    <div class="col-8">
+        <br>
+         <div class="mb-3">
+        <a href ="{% url 'scheme-column-list' object.id %}" class="btn btn-primary">Columns</a>
+        </div>
+        <div class="mb-3">
+         <a class="btn btn-success" href="{%url 'scheme-column-add'%}?scheme_id={{ object.id }}" role="button">New Column</a>
+         </div>
+    </div>
+      
+        {% else %}
+        <form action="" method="post">
+        {% csrf_token %}
+        <div class="col-12">
+          <div class="mb-3">
+            <label for="id_scheme_name" class="form-label"> Scheme name :</label>
+            <p>{{ form.scheme_name }}</p>
+            <label for="id_rows" class="form-label"> Rows :</label>
+            <p>{{ form.rows }}</p>
+            <label for="id_rows" class="form-label"> Min age :</label>
+            <p>{{ form.min_age }}</p>
+            <label for="id_max_age" class="form-label"> Max age :</label>
+            <p>{{ form.max_age }}</p>
+            <label for="id_quantity_of_sentences" class="form-label"> How many sentences do you want to generate :</label>
+            <p>{{ form.quantity_of_sentences }}</p>
+          </div>
+        </div>
+          <input type="submit" class="btn btn-primary" value="Create Scheme">
+        </form>
+        {% endif %}
 {% endblock %}

@@ -32,9 +32,14 @@
 	            		{{ scheme.modified }}
 	            	</td>
 	            	<td>
-	            		<a href ="{% url 'scheme-update' scheme.pk %}">Edit scheme</a>
+	            		<a href ="{% url 'scheme-update' scheme.pk %}" class="btn btn-primary btn-sm">Edit scheme</a>
+	            		&nbsp;
+	            		<a href ="{% url 'scheme-column-list' scheme.pk %}" class="btn btn-primary btn-sm">Columns</a>
+	            		&nbsp;
+	            		<a class="btn btn-success btn-sm" href="{%url 'scheme-column-add'%}?scheme_id={{ scheme.pk }}" role="button">New Column</a>
 	            		&nbsp; 
-	            		<a style="color:red;" href ="{% url 'scheme-delete' scheme.pk %}">Delete</a>
+	            		<a href ="{% url 'scheme-delete' scheme.pk %}" class="btn btn-danger btn-sm">Delete</a>
+
 	            	</td>
 	            </tr>
 	            {% endfor %}

@@ -8,10 +8,11 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.shortcuts import redirect
+from django.contrib import messages
 from django.conf import settings
 
-from .models import Scheme
-from .forms import SchemeForm
+from .models import Scheme, SchemeColumn
+from .forms import SchemeForm, SchemeColumnForm
 from .services import make_csv
 
 @login_required
@@ -21,7 +22,7 @@ def generate_csv(request, *args, **kwargs):
     """
     if request.POST:
         scheme_id = int(request.POST.get("scheme"))
-        scheme = Scheme.objects.get(pk=scheme_id)
+        scheme = Scheme.objects.get(id=scheme_id)
         make_csv(scheme_id=scheme_id)
         return redirect('dataset-list')
     else:
@@ -69,3 +70,54 @@ class SchemeDeleteView(DeleteView):
 	template_name = 'generator/scheme_confirm_delete.html'
 	success_url = '/scheme_list/'
 
+
+@method_decorator(login_required, name='dispatch')
+class SchemeColumnCreateView(CreateView):
+	model = SchemeColumn
+	form_class = SchemeColumnForm
+	template_name = 'generator/scheme_column_create.html'
+
+	def form_valid(self, form):
+		try:
+			scheme_id = int(self.request.GET.get('scheme_id'))
+			form.instance.scheme = Scheme.objects.get(id=scheme_id)
+			return super().form_valid(form)
+		except Exception:
+			messages.error(self.request, f"Orders should be unique :(")
+			return super().form_invalid(form)
+
+	def get_success_url(self):
+		return ''.join(('/scheme/', self.request.GET.get('scheme_id'), '/'))
+
+
+@method_decorator(login_required, name='dispatch')
+class SchemeColumnListView(ListView):
+	template_name = 'generator/scheme_column_list.html'
+
+	def get_queryset(self) :
+		queryset = SchemeColumn.objects.filter(scheme=self.kwargs['scheme__id']).order_by('order')
+		return queryset
+
+
+@method_decorator(login_required, name='dispatch')
+class SchemeColumnUpdateView(UpdateView):
+	model = SchemeColumn
+	form_class = SchemeColumnForm
+	template_name = 'generator/scheme_column_create.html'
+
+	def form_valid(self, form):
+		scheme_id = int(self.request.GET.get('scheme_id'))
+		form.instance.scheme = Scheme.objects.get(id=scheme_id)
+		return super().form_valid(form)
+
+	def get_success_url(self):
+		return ''.join(('/scheme/', self.request.GET.get('scheme_id'), '/'))
+
+
+@method_decorator(login_required, name='dispatch')
+class SchemeColumnDeleteView(DeleteView):
+	model = SchemeColumn
+	template_name = 'generator/scheme_column_confirm_delete.html'
+
+	def get_success_url(self):
+		return ''.join(('/scheme/column/list/', str(self.kwargs['pk'])))

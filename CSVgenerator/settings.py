@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'CSVgenerator.wsgi.application'
 
 
 DATABASES = {
-    'default':{
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'myproject',
-        'USER': 'projectuser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'NAME': 'csvgenerator',
+        'USER': 'developer',
+        'PASSWORD': 'mypassword',
+        'HOST': '127.0.0.1',
         'PORT': '5432',
     }
 }
